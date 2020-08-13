@@ -1,0 +1,21 @@
+{
+  "name": "ravenholm",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/omegafury/Ravenholm"
+  },
+  "author": "Andrew Poe",
+  "license": "MIT",
+  "workspaces": [
+    "frontend"
+  ],
+  "scripts": {
+    "dev": "yarn workspace frontend dev",
+    "build": "yarn workspace frontend build",
+    "start": "yarn workspace frontend start"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
