@@ -1,8 +1,7 @@
-import Layout from "../../components/layout";
-import { getAllPostIds, getPostData } from "../../util/posts";
-import Date from "../../components/date";
+import { getAllPostIds, getPostData } from "util/posts";
+import Date from "components/date";
 import Head from "next/head";
-import utilStyles from "../../styles/utils.module.css";
+import utilStyles from "styles/utils.module.css";
 import { GetStaticProps, GetStaticPaths } from "next";
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -14,7 +13,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const postData = await getPostData(params.id as string);
+  const id = params ? params.id : "";
+  const postData = await getPostData(id as string);
   return {
     props: {
       postData,
@@ -32,7 +32,7 @@ export default function Post({
   };
 }) {
   return (
-    <Layout>
+    <>
       <Head>
         <title>{postData.title}</title>
       </Head>
@@ -43,6 +43,6 @@ export default function Post({
         </div>
         <div dangerouslySetInnerHTML={{ __html: postData.contentHtml }} />
       </article>
-    </Layout>
+    </>
   );
 }
