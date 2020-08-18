@@ -1,12 +1,21 @@
 import styles from "components/layout.module.scss";
-
-const onClick = (event: React.MouseEvent<HTMLElement>) => {
-  event.currentTarget.classList.toggle(styles.change);
-};
+import { useState, useDispatch } from "components/ContextProvider";
+import { useCallback } from "react";
+import { toggleHamburger } from "util/actions/hamburgerActions";
 
 export default function Hamburger({ className }: { className?: string }) {
+  const dispatch = useDispatch();
+  const { hamburger: state } = useState();
+  const isOpen = state.isOpen;
+  const navIconClassName = isOpen
+    ? `${className} ${styles.navIcon} ${styles.isOpen}`
+    : `${className} ${styles.navIcon}`;
+  const onClick = useCallback(() => {
+    dispatch(toggleHamburger());
+  }, []);
+
   return (
-    <div className={`${className} ${styles.icon}`} onClick={onClick}>
+    <div className={navIconClassName} onClick={onClick}>
       <div className={styles.hamburger}></div>
       <svg x="0px" y="0px" viewBox="0 0 50 50">
         <circle

@@ -1,17 +1,13 @@
 import Head from "next/head";
 import Hamburger from "components/Hamburger";
+import NavMenu from "components/NavMenu";
 import styles from "components/layout.module.scss";
 import Link from "next/link";
 import { poeRavenPath, ravenPath } from "util/constants";
 
 const name = "Andrew Poe";
 
-export default function Layout({
-  children,
-}: {
-  children: React.ReactNode;
-  home?: boolean;
-}) {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <div className={styles.container}>
       <Head>
@@ -22,11 +18,12 @@ export default function Layout({
         ></meta>
       </Head>
       <Link href="/">
-        <a className={styles.headerAnchor}>
+        <a className={styles.homeAnchor}>
           <img src={poeRavenPath} alt={name} />
         </a>
       </Link>
       <Hamburger className={styles.hamburgerPosition} />
+      <NavMenu />
       <div className={styles.body}>
         <main>{children}</main>
       </div>
