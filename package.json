@@ -9,7 +9,7 @@
   "author": "Andrew Poe",
   "license": "MIT",
   "workspaces": [
-    "frontend"
+    "workspaces/frontend"
   ],
   "scripts": {
     "dev": "yarn workspace frontend dev",
