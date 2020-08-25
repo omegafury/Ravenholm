@@ -25,3 +25,55 @@ img {
   max-width: 100%;
   display: block;
 }
+
+.page-transition-enter {
+  opacity: 0;
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+.page-transition-exit {
+  opacity: 1;
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* .page-transition-enter {
+  transform-origin: center top;
+  opacity: 0;
+  transform: rotate3d(1, 0, 0, -20deg);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: rotate3d(1, 0, 0, 0);
+  transition: opacity 300ms, transform 500ms;
+}
+.page-transition-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transform: scale(0.7) rotateZ(20deg);
+  transition: opacity 500ms, transform 500ms;
+} */
+
+/* .page-transition-enter {
+  opacity: 0;
+  transform: translate3d(0, 20px, 0);
+}
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+  transition: opacity 300ms, transform 300ms;
+}
+.page-transition-exit {
+  opacity: 1;
+}
+.page-transition-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+} */

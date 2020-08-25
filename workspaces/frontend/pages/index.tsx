@@ -2,7 +2,7 @@ import Head from "next/head";
 import utilStyles from "styles/utils.module.css";
 import { getSortedPostsData } from "util/posts";
 import Link from "next/link";
-import Date from "components/date";
+import Date from "components/Date";
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
 
 const siteTitle = "Next.js Sample Website";

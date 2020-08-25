@@ -36,7 +36,7 @@ export default function NavMenu() {
             </Link>
           </li>
           <li>
-            <Link href="/first-post" as={`/posts/first-post`}>
+            <Link href="/posts/first-post" as={`/posts/first-post`}>
               <a onClick={onClick}>First Post</a>
             </Link>
           </li>

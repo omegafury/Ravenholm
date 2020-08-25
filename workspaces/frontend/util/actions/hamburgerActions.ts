@@ -2,10 +2,10 @@ export const TOGGLE_HAMBURGER = "TOGGLE_HAMBURGER";
 
 export type hamburgerActionTypes = toggleHamburgerAction;
 
-interface toggleHamburgerAction {
+type toggleHamburgerAction = {
   type: typeof TOGGLE_HAMBURGER;
   isOpen?: boolean;
-}
+};
 
 /**
  * This toggles the isOpen property of the hamburger menu, triggering the

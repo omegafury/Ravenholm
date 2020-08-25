@@ -1,40 +1,60 @@
 import {
+  hamburgerStateType,
   initialState as hamburgerInitialState,
   reducer as hamburgerReducer,
 } from "util/reducers/hamburgerReducer";
+import {
+  pageTransitionStateType,
+  initialState as pageTransitionInitialState,
+  reducer as pageTransitionReducer,
+} from "util/reducers/pageTransitionReducer";
 import { hamburgerActionTypes } from "util/actions/hamburgerActions";
+import { pageTransitionActionsTypes } from "util/actions/pageTransitionActions";
 
 // The union of all state and action types respectively
-type stateTypes = typeof hamburgerInitialState;
-export type actionTypes = hamburgerActionTypes;
-
-// Our final state object has keys mapping to each reducers substate
 type stateType = {
-  [key: string]: stateTypes;
+  hamburger: hamburgerStateType;
+  pageTransition: pageTransitionStateType;
 };
+export type actionTypes = hamburgerActionTypes | pageTransitionActionsTypes;
+
 // Maps the reducers to their corresponding keys in the state
-type ReducerMapType = {
-  [k in keyof stateType]: (
-    state: stateType[k],
-    action: actionTypes
-  ) => stateType[k];
+type ReducerMapType<S> = {
+  [k in keyof S]: React.Reducer<S[k], actionTypes>;
+};
+const reducerMap: ReducerMapType<stateType> = {
+  hamburger: hamburgerReducer,
+  pageTransition: pageTransitionReducer,
+};
+
+const pickAndApplyReducer = <S extends stateType, K extends keyof S>(
+  state: S,
+  mutableState: S,
+  reducerMap: ReducerMapType<S>,
+  action: actionTypes,
+  key: K
+) => {
+  mutableState[key] = reducerMap[key](state[key], action);
 };
 
 // Combines the individual reducers into a single reducer function. This function takes
 // the provided action and runs it against each sub-reducer
-const combineReducers = (reducers: ReducerMapType) => (
+const combineReducers = (reducers: ReducerMapType<stateType>) => (
   state: stateType,
   action: actionTypes
 ) => {
-  const newState: stateType = {};
-  for (let key in state) {
-    newState[key] = reducers[key](state[key], action);
+  const newState = { ...state };
+
+  for (let key in reducers) {
+    pickAndApplyReducer(
+      state,
+      newState,
+      reducers,
+      action,
+      key as keyof stateType
+    );
   }
   return newState;
-};
-
-const reducerMap: ReducerMapType = {
-  hamburger: hamburgerReducer,
 };
 
 export const rootReducer: React.Reducer<
@@ -43,4 +63,5 @@ export const rootReducer: React.Reducer<
 > = combineReducers(reducerMap);
 export const rootInitialState: stateType = {
   hamburger: hamburgerInitialState,
+  pageTransition: pageTransitionInitialState,
 };
