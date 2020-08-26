@@ -5,6 +5,8 @@ import { ContextProvider } from "components/ContextProvider";
 import "styles/global.css";
 import { useRouter } from "next/dist/client/router";
 import PageTransition from "components/PageTransition";
+import "util/fontAwesome";
+import "@fortawesome/fontawesome-svg-core/styles.css";
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
