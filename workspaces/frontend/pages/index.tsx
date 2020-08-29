@@ -3,35 +3,57 @@ import utilStyles from "styles/utils.module.css";
 import { getSortedPostsData } from "util/posts";
 import Link from "next/link";
 import Date from "components/Date";
-import { GetStaticProps, GetStaticPaths, GetServerSideProps } from "next";
+import {
+  GetStaticProps,
+  GetStaticPaths,
+  GetServerSideProps,
+  InferGetStaticPropsType,
+} from "next";
+import VoronoiStippling from "components/VoronoiStippling";
+import VoronoiMutator from "components/VoronoiMutator";
 
 const siteTitle = "Next.js Sample Website";
 
-export const getStaticProps: GetStaticProps = async (context) => {
+export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData();
   return {
     props: {
       allPostsData,
-      home: true,
     },
   };
 };
 
 export default function Home({
   allPostsData,
-}: {
-  allPostsData: {
-    date: string;
-    title: string;
-    id: string;
-  }[];
-}) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <section className={utilStyles.headingMd}>
+      <div
+        style={{
+          height: "inherit",
+          display: "grid",
+          gridTemplateAreas: `"mainBody"`,
+        }}
+      >
+        {/* <VoronoiStippling /> */}
+        <div
+          style={{
+            gridArea: "mainBody",
+            justifySelf: "center",
+            alignSelf: "center",
+            fontSize: "2em",
+            zIndex: 2,
+            fontWeight: "bolder",
+          }}
+        >
+          Andrew Poe
+        </div>
+        <VoronoiMutator />
+      </div>
+      {/* <section className={utilStyles.headingMd}>
         <p>[Your Self Introduction]</p>
         <p>
           (This is a sample website - you’ll be building a site like this in{" "}
@@ -53,7 +75,7 @@ export default function Home({
             </li>
           ))}
         </ul>
-      </section>
+      </section> */}
     </>
   );
 }

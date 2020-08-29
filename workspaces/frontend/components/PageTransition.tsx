@@ -1,7 +1,7 @@
 import React, { JSXElementConstructor, useEffect, useCallback } from "react";
 import Transition from "react-transition-group/Transition";
 import CSSTransition from "react-transition-group/CSSTransition";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticProps } from "next";
 import { useDispatch, useState } from "components/ContextProvider";
 import {
   setShowLoading,
@@ -191,7 +191,7 @@ export default function PageTransition({
         onExiting={onExiting}
         onExited={onExited}
       >
-        <Tag className={containerClassName}>
+        <Tag className={containerClassName} style={{ height: "100%" }}>
           {React.isValidElement(renderedChildren) &&
             React.cloneElement(renderedChildren, {
               [loadingCallbackName]: () => onChildLoaded(),

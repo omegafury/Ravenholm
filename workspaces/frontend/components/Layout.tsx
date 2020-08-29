@@ -24,9 +24,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Link>
       <Hamburger className={styles.hamburgerPosition} />
       <NavMenu />
-      <div className={styles.body}>
-        <main>{children}</main>
-      </div>
+      <div className={styles.body}>{children}</div>
     </div>
   );
 }
