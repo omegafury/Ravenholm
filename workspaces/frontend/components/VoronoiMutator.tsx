@@ -115,8 +115,8 @@ function render(context: CanvasRenderingContext2D, options: OptionsType) {
     const {
       lineWidth = 1,
       pointRadius = 1.5,
-      pointColor = "#000",
-      lineColor = "#000",
+      pointColor = "#b0c4de",
+      lineColor = "#b0c4de",
       bgColor = "#fff",
       minRadius = 0,
       maxRadius = 1,
@@ -213,7 +213,7 @@ export default function VoronoiMutator() {
         style={{
           width: "100%",
           height: "100%",
-          opacity: 0.3,
+          opacity: 0.5,
           gridArea: "mainBody",
         }}
       />

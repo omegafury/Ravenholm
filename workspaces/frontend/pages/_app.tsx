@@ -7,6 +7,7 @@ import { useRouter } from "next/dist/client/router";
 import PageTransition from "components/PageTransition";
 import "util/fontAwesome";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import "react-typist/dist/Typist.css";
 
 function App({ Component, pageProps }: AppProps) {
   const router = useRouter();

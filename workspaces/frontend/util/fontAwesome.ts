@@ -7,8 +7,15 @@ import { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import {
   faArrowAltCircleDown,
   faEnvelope,
+  faCopyright,
 } from "@fortawesome/free-regular-svg-icons";
 
 config.autoAddCss = false;
 
-library.add(faGithub, faLinkedin, faArrowAltCircleDown, faEnvelope);
+library.add(
+  faGithub,
+  faLinkedin,
+  faArrowAltCircleDown,
+  faEnvelope,
+  faCopyright
+);

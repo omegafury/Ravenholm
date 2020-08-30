@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import utilStyles from "styles/utils.module.css";
 import { getSortedPostsData } from "util/posts";
@@ -11,6 +12,7 @@ import {
 } from "next";
 import VoronoiStippling from "components/VoronoiStippling";
 import VoronoiMutator from "components/VoronoiMutator";
+import Typist from "react-typist";
 
 const siteTitle = "Next.js Sample Website";
 
@@ -26,6 +28,7 @@ export const getStaticProps = async () => {
 export default function Home({
   allPostsData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
+  const descriptors = ["Software Engineer"];
   return (
     <>
       <Head>
@@ -46,36 +49,51 @@ export default function Home({
             alignSelf: "center",
             fontSize: "2em",
             zIndex: 2,
-            fontWeight: "bolder",
           }}
         >
-          Andrew Poe
+          <Typist cursor={{ show: false }}>
+            <div
+              style={{
+                display: "grid",
+                gridTemplateAreas: `"name"
+                                "descriptor"`,
+              }}
+            >
+              <span
+                style={{
+                  gridArea: "name",
+                  textAlign: "center",
+                  width: "350px",
+                }}
+              >
+                Andrew Poe
+              </span>
+              <Typist.Delay ms={1000} />
+              {descriptors.map((descriptor, index) => {
+                const returnArray = [
+                  <span
+                    key={"descriptor" + index}
+                    style={{ gridArea: "descriptor", justifySelf: "center" }}
+                  >
+                    &nbsp;{descriptor}&nbsp;
+                  </span>,
+                ];
+                if (index + 1 < descriptors.length) {
+                  returnArray.push(
+                    <Typist.Backspace
+                      key={"typist" + index}
+                      count={descriptor.length + 1}
+                      delay={1000}
+                    />
+                  );
+                }
+                return returnArray;
+              })}
+            </div>
+          </Typist>
         </div>
         <VoronoiMutator />
       </div>
-      {/* <section className={utilStyles.headingMd}>
-        <p>[Your Self Introduction]</p>
-        <p>
-          (This is a sample website - you’ll be building a site like this in{" "}
-          <a href="https://nextjs.org/learn">our Next.js tutorial</a>.)
-        </p>
-      </section>
-      <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
-        <h2 className={utilStyles.headingLg}>Blog</h2>
-        <ul className={utilStyles.list}>
-          {allPostsData.map(({ id, date, title }) => (
-            <li className={utilStyles.listItem} key={id}>
-              <Link href="/posts/[id]" as={`/posts/${id}`}>
-                <a>{title}</a>
-              </Link>
-              <br />
-              <small className={utilStyles.lightText}>
-                <Date dateString={date} />
-              </small>
-            </li>
-          ))}
-        </ul>
-      </section> */}
     </>
   );
 }

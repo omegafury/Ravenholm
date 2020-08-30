@@ -4,8 +4,7 @@ import NavMenu from "components/NavMenu";
 import styles from "components/layout.module.scss";
 import Link from "next/link";
 import { POE_RAVEN_PATH, RAVEN_PATH } from "util/constants";
-
-const name = "Andrew Poe";
+import Footer from "components/Footer";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -19,12 +18,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </Head>
       <Link href="/">
         <a className={styles.homeAnchor}>
-          <img src={POE_RAVEN_PATH} alt={name} />
+          <img src={POE_RAVEN_PATH} alt={"home"} />
         </a>
       </Link>
       <Hamburger className={styles.hamburgerPosition} />
       <NavMenu />
       <div className={styles.body}>{children}</div>
+      <Footer />
     </div>
   );
 }
