@@ -1,0 +1,173 @@
+.experiencesGridContainer {
+  height: inherit;
+  display: grid;
+  grid-template-columns: 200px calc(100vw - 200px);
+  grid-template-areas: "sidebar body";
+
+  .experiencesSidebarContainer {
+    grid-area: sidebar;
+    width: 200px;
+    transition: width 1s;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    .experiencesSidebarItem {
+      flex-grow: 1;
+      display: grid;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: relative;
+      font-weight: bold;
+      border-right: 2px solid lightsteelblue;
+      span {
+        z-index: 2;
+        opacity: 1;
+        transition: opacity 1s 0.75s;
+      }
+      span:nth-child(1) {
+        justify-self: center;
+        align-self: end;
+      }
+      span:nth-child(2) {
+        justify-self: center;
+        align-self: center;
+      }
+      span:nth-child(3) {
+        justify-self: center;
+        align-self: start;
+      }
+    }
+    .experiencesSidebarItem:first-child {
+      border-bottom: 1px solid lightsteelblue;
+    }
+    .experiencesSidebarItem:not(:first-child):not(:last-child) {
+      border-bottom: 1px solid lightsteelblue;
+      border-top: 1px solid lightsteelblue;
+    }
+    .experiencesSidebarItem:last-child {
+      border-top: 1px solid lightsteelblue;
+    }
+    .experiencesSidebarItem::before {
+      content: "";
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.75);
+      transition: background-color 1s;
+    }
+    .experiencesSidebarItem:hover {
+      opacity: 0.25;
+    }
+    .pgSidebarItem {
+      background-image: url(/images/pgFlameLogo.png);
+    }
+    .ncsuSidebarItem {
+      background-image: url(/images/ncsuBlockSLogo.png);
+    }
+    .wtccSidebarItem {
+      background-image: url(/images/wtFlameLogo.jpg);
+    }
+    .usafSidebarItem {
+      background-image: url(/images/usafLogo.png);
+    }
+  }
+
+  .experiencesBodyContainer {
+    grid-area: body;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: grid;
+    transition: width 1s;
+
+    .experiencesBodyItem {
+      height: inherit;
+      width: inherit;
+      position: absolute;
+      justify-self: center;
+      align-self: center;
+      opacity: 0;
+    }
+    .experiencesBodyPG {
+      background-color: red;
+    }
+    .experiencesBodyNCSU {
+      background-color: blue;
+    }
+    .isVisible {
+      opacity: 1;
+      animation: bodyCardTransitionIn 1.5s;
+    }
+    .isHidden {
+      animation: bodyCardTransitionOut 1.5s;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .experiencesGridContainer {
+    grid-template-columns: 50px auto;
+    .experiencesSidebarContainer {
+      width: 50px;
+      transition: width 1s;
+      .experiencesSidebarItem {
+        span {
+          opacity: 0 !important;
+          transition: none !important;
+        }
+      }
+      .experiencesSidebarItem::before {
+        background-color: transparent !important;
+        transition: background-color 1s;
+      }
+    }
+  }
+}
+
+@keyframes bodyCardTransitionIn {
+  from {
+    opacity: 0;
+    width: 50%;
+    height: 50%;
+  }
+  45% {
+    opacity: 0;
+    width: 50%;
+    height: 50%;
+    transform: perspective(1000px) rotate3d(0, 1, 0, -90deg);
+  }
+  80% {
+    opacity: 1;
+    transform: perspective(0px) rotate3d(0, 1, 0, 0deg);
+  }
+  to {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes bodyCardTransitionOut {
+  from {
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+  }
+  20% {
+    width: 50%;
+    height: 50%;
+    opacity: 1;
+    transform: perspective(0px) rotate3d(0, 1, 0, 0deg);
+  }
+  55% {
+    opacity: 0;
+    transform: perspective(1000px) rotate3d(0, 1, 0, 90deg);
+  }
+  to {
+    width: 50%;
+    height: 50%;
+    opacity: 0;
+  }
+}

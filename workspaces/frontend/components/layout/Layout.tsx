@@ -1,10 +1,12 @@
-import Head from "next/head";
-import Hamburger from "components/Hamburger";
-import NavMenu from "components/NavMenu";
-import styles from "components/layout.module.scss";
-import Link from "next/link";
+import Hamburger from "components/layout/Hamburger";
+import NavMenu from "components/layout/NavMenu";
+import styles from "components/layout/layout.module.scss";
 import { POE_RAVEN_PATH, RAVEN_PATH } from "util/constants";
-import Footer from "components/Footer";
+import Footer from "components/layout/Footer";
+import Head from "next/head";
+import Link from "next/link";
+
+const siteTitle = "Ravenholm";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,6 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           name="viewport"
           content="width=device-width, initial-scale=1.0"
         ></meta>
+        <title>{siteTitle}</title>
       </Head>
       <Link href="/">
         <a className={styles.homeAnchor}>

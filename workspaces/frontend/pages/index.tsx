@@ -14,7 +14,7 @@ import VoronoiStippling from "components/VoronoiStippling";
 import VoronoiMutator from "components/VoronoiMutator";
 import Typist from "react-typist";
 
-const siteTitle = "Next.js Sample Website";
+const siteTitle = "Ravenholm";
 
 export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData();
@@ -31,9 +31,6 @@ export default function Home({
   const descriptors = ["Software Engineer"];
   return (
     <>
-      <Head>
-        <title>{siteTitle}</title>
-      </Head>
       <div
         style={{
           height: "inherit",

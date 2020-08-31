@@ -1,4 +1,4 @@
-import styles from "components/layout.module.scss";
+import styles from "components/layout/layout.module.scss";
 import { useState, useDispatch } from "components/ContextProvider";
 import utilStyles from "styles/utils.module.css";
 import Link from "next/link";

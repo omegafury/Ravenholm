@@ -1,4 +1,4 @@
-import styles from "components/layout.module.scss";
+import styles from "components/layout/layout.module.scss";
 import { GITHUB_LINK, LINKEDIN_LINK } from "util/constants";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 

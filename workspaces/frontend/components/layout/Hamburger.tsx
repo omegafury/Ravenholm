@@ -1,4 +1,4 @@
-import styles from "components/layout.module.scss";
+import styles from "components/layout/layout.module.scss";
 import { useState, useDispatch } from "components/ContextProvider";
 import { useCallback } from "react";
 import { toggleHamburger } from "util/actions/hamburgerActions";

@@ -186,11 +186,11 @@ export default function VoronoiMutator() {
     }
 
     const options = {
-      points: Math.round(getRandomFromRange(32, 128)),
+      points: Math.round(getRandomFromRange(32, 196)),
       canvasWidth: canvas.width,
       canvasHeight: canvas.height,
       largerDimension:
-        canvas.width > canvas.height ? canvas.width : canvas.height,
+        canvas.width < canvas.height ? canvas.width : canvas.height,
     };
 
     const drawFrame = render(context, options);
