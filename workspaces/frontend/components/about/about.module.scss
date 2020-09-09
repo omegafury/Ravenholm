@@ -1,3 +1,7 @@
+// Change this to import from a variables.scss file
+$thinBorder: 1px solid lightsteelblue;
+$normalBorder: 2px solid lightsteelblue;
+
 .experiencesGridContainer {
   height: inherit;
   display: grid;
@@ -20,7 +24,7 @@
       background-repeat: no-repeat;
       position: relative;
       font-weight: bold;
-      border-right: 2px solid lightsteelblue;
+      border-right: $normalBorder;
       span {
         z-index: 2;
         opacity: 1;
@@ -40,14 +44,14 @@
       }
     }
     .experiencesSidebarItem:first-child {
-      border-bottom: 1px solid lightsteelblue;
+      border-bottom: $thinBorder;
     }
     .experiencesSidebarItem:not(:first-child):not(:last-child) {
-      border-bottom: 1px solid lightsteelblue;
-      border-top: 1px solid lightsteelblue;
+      border-bottom: $thinBorder;
+      border-top: $thinBorder;
     }
     .experiencesSidebarItem:last-child {
-      border-top: 1px solid lightsteelblue;
+      border-top: $thinBorder;
     }
     .experiencesSidebarItem::before {
       content: "";
@@ -89,18 +93,63 @@
       justify-self: center;
       align-self: center;
       opacity: 0;
+      display: grid;
+      grid-template-rows: 5em 1em;
+      overflow-y: auto;
+
+      .bodyLogo {
+        justify-self: center;
+        align-self: center;
+        height: 100%;
+      }
+      hr {
+        width: 90%;
+        height: 2px;
+        color: lightsteelblue;
+      }
+      section {
+        margin-left: 1em;
+        margin-right: 2em;
+        h3 {
+          margin-top: 0;
+        }
+      }
+      .sectionSummary {
+        > p {
+          margin-left: 1em;
+        }
+      }
+      // .sectionStack {}
+      // .sectionEvents {}
+      .sectionPositions,
+      .sectionClasses {
+        > ul > li > div {
+          display: grid;
+          grid-template-columns: 50% 50%;
+          :first-child {
+            margin: 0.5em;
+            justify-self: left;
+            align-self: center;
+          }
+          :last-child {
+            margin: 0.5em;
+            justify-self: center;
+            align-self: center;
+          }
+        }
+      }
     }
-    .experiencesBodyPG {
-      background-color: red;
-    }
-    .experiencesBodyNCSU {
-      background-color: blue;
-    }
+    // .experiencesBodyPG {}
+    // .experiencesBodyNCSU {}
+    // .experiencesBodyWtcc {}
+    // .experiencesBodyUsaf {}
     .isVisible {
+      z-index: 1;
       opacity: 1;
       animation: bodyCardTransitionIn 1.5s;
     }
     .isHidden {
+      z-index: 0;
       animation: bodyCardTransitionOut 1.5s;
     }
   }
@@ -108,9 +157,9 @@
 
 @media only screen and (max-width: 800px) {
   .experiencesGridContainer {
-    grid-template-columns: 50px auto;
+    grid-template-columns: 25px auto;
     .experiencesSidebarContainer {
-      width: 50px;
+      width: 25px;
       transition: width 1s;
       .experiencesSidebarItem {
         span {
@@ -128,46 +177,67 @@
 
 @keyframes bodyCardTransitionIn {
   from {
+    border: $normalBorder;
     opacity: 0;
     width: 50%;
     height: 50%;
+    font-size: 50%;
+    overflow-y: hidden;
   }
   45% {
     opacity: 0;
-    width: 50%;
-    height: 50%;
-    transform: perspective(1000px) rotate3d(0, 1, 0, -90deg);
+    transform: perspective(2000px) rotate3d(0, 1, 0, -90deg);
   }
   80% {
     opacity: 1;
+    width: 50%;
+    height: 50%;
+    font-size: 50%;
     transform: perspective(0px) rotate3d(0, 1, 0, 0deg);
   }
+  99% {
+    border: $normalBorder;
+    overflow-y: hidden;
+  }
   to {
+    border: none;
     opacity: 1;
     width: 100%;
     height: 100%;
+    font-size: 100%;
+    overflow-y: auto;
   }
 }
 
 @keyframes bodyCardTransitionOut {
   from {
+    border: $normalBorder;
     opacity: 1;
     width: 100%;
     height: 100%;
+    font-size: 100%;
+    overflow-y: hidden;
   }
   20% {
+    opacity: 1;
     width: 50%;
     height: 50%;
-    opacity: 1;
+    font-size: 50%;
     transform: perspective(0px) rotate3d(0, 1, 0, 0deg);
   }
   55% {
     opacity: 0;
-    transform: perspective(1000px) rotate3d(0, 1, 0, 90deg);
+    transform: perspective(2000px) rotate3d(0, 1, 0, 90deg);
+  }
+  99% {
+    border: $normalBorder;
   }
   to {
+    border: none;
+    opacity: 0;
     width: 50%;
     height: 50%;
-    opacity: 0;
+    font-size: 50%;
+    overflow-y: hidden;
   }
 }
