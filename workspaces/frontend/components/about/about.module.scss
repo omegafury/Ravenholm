@@ -103,7 +103,7 @@ $normalBorder: 2px solid lightsteelblue;
         height: 100%;
       }
       hr {
-        width: 90%;
+        width: 80%;
         height: 2px;
         color: lightsteelblue;
       }
@@ -112,6 +112,9 @@ $normalBorder: 2px solid lightsteelblue;
         margin-right: 2em;
         h3 {
           margin-top: 0;
+        }
+        .audioControlsAnchor {
+          display: none;
         }
       }
       .sectionSummary {
@@ -171,6 +174,16 @@ $normalBorder: 2px solid lightsteelblue;
         background-color: transparent !important;
         transition: background-color 1s;
       }
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  .experiencesGridContainer {
+    audio {
+      display: none;
+    }
+    .audioControlsAnchor {
+      display: block !important;
     }
   }
 }

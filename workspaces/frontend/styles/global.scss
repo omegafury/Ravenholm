@@ -1,24 +1,41 @@
 // Change this to import from a variables.scss file
 $globalFontSize: 18px;
-$globalMobileFontSize: 16px;
+$globalTabletFontSize: 16px;
+$globalMobileFontSize: 14px;
 
 html,
 body {
   padding: 0;
   margin: 0;
-  min-width: 380px;
+  min-width: 320px;
   /* Find good replacement here. I'm thinking it should be a serif font, not the sans-serif I was using originaly.*/
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
   line-height: 1.6;
   font-size: $globalFontSize;
 }
+// Override a static 40px padding with a dynamic em padding.
+ul {
+  padding-inline-start: 1.5em;
+}
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   html,
   body {
+    font-size: $globalTabletFontSize;
+  }
+}
+@media only screen and (max-width: 425px) {
+  /* For mobile phones: */
+  html,
+  body {
     font-size: $globalMobileFontSize;
+  }
+
+  // Override a static 40px padding with a dynamic em padding.
+  ul {
+    padding-inline-start: 1em;
   }
 }
 
@@ -26,15 +43,10 @@ body {
   box-sizing: border-box;
 }
 
-ul {
-  padding-inline-start: 1.5em;
-}
-
 a {
   color: #0070f3;
   text-decoration: none;
 }
-
 a:hover {
   text-decoration: underline;
 }
@@ -44,6 +56,7 @@ img {
   display: block;
 }
 
+// Quote block styling. Gives a left gray sidebar and a very light gray background for the quoted element
 .quote::before {
   content: "";
   width: 0.5em;
