@@ -28,7 +28,7 @@ export default function ExperiencesBodyUsaf() {
         <h3>Noteworthy Events</h3>
         <ul>
           <li>
-            Recognized as a distinguished graduate (top 10% of class) in Airment
+            Recognized as a distinguished graduate (top 10% of class) in Airmen
             Leadership School, a 192 hour course that focuses on developing
             leadership abilities, the profession of arms, and building effective
             communication.
