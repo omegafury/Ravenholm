@@ -1,11 +1,11 @@
 import { AppProps } from "next/app";
+import { useRouter } from "next/dist/client/router";
 import React from "react";
 import Layout from "components/layout/Layout";
 import { ContextProvider } from "components/ContextProvider";
-import "styles/global.scss";
-import { useRouter } from "next/dist/client/router";
 import PageTransition from "components/PageTransition";
 import "util/fontAwesome";
+import "styles/global.scss";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import "react-typist/dist/Typist.css";
 
