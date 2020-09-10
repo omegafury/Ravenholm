@@ -13,9 +13,25 @@ import ExperiencesBodyUsaf from "components/about/ExperiencesBodyUsaf";
  * @param indexToShow The index of the body element we want to make visible
  */
 const toggleBodyItemVisibility = (
+  navElementRefs: React.RefObject<HTMLLIElement>[],
   bodyElementRefs: React.RefObject<HTMLDivElement>[],
   indexToShow: number
 ) => {
+  const navElements = navElementRefs.map((navElementRef) => {
+    return navElementRef.current;
+  });
+  console.warn(navElements, navElementRefs, indexToShow);
+  navElements.forEach((element, index) => {
+    if (!element) {
+      return;
+    }
+    if (index === indexToShow) {
+      element.classList.add(styles.isSelected);
+    } else {
+      element.classList.remove(styles.isSelected);
+    }
+  });
+
   const bodyElements = bodyElementRefs.map((bodyElementRef) => {
     return bodyElementRef.current;
   });
@@ -34,23 +50,28 @@ const toggleBodyItemVisibility = (
 };
 
 export default function Experiences() {
+  const pgNavRef = useRef<HTMLLIElement>(null);
   const pgBodyRef = useRef<HTMLDivElement>(null);
+  const ncsuNavRef = useRef<HTMLLIElement>(null);
   const ncsuBodyRef = useRef<HTMLDivElement>(null);
+  const wtccNavRef = useRef<HTMLLIElement>(null);
   const wtccBodyRef = useRef<HTMLDivElement>(null);
+  const usafNavRef = useRef<HTMLLIElement>(null);
   const usafBodyRef = useRef<HTMLDivElement>(null);
+  const navElementRefs = [pgNavRef, ncsuNavRef, wtccNavRef, usafNavRef];
   const bodyElementRefs = [pgBodyRef, ncsuBodyRef, wtccBodyRef, usafBodyRef];
 
   const pgSidebarClickCallback = useCallback(() => {
-    toggleBodyItemVisibility(bodyElementRefs, 0);
+    toggleBodyItemVisibility(navElementRefs, bodyElementRefs, 0);
   }, []);
   const ncsuSidebarClickCallback = useCallback(() => {
-    toggleBodyItemVisibility(bodyElementRefs, 1);
+    toggleBodyItemVisibility(navElementRefs, bodyElementRefs, 1);
   }, []);
   const wtccSidebarClickCallback = useCallback(() => {
-    toggleBodyItemVisibility(bodyElementRefs, 2);
+    toggleBodyItemVisibility(navElementRefs, bodyElementRefs, 2);
   }, []);
   const usafSidebarClickCallback = useCallback(() => {
-    toggleBodyItemVisibility(bodyElementRefs, 3);
+    toggleBodyItemVisibility(navElementRefs, bodyElementRefs, 3);
   }, []);
 
   return (
@@ -58,7 +79,8 @@ export default function Experiences() {
       <div className={styles.experiencesGridContainer}>
         <ul className={styles.experiencesSidebarContainer}>
           <li
-            className={`${styles.experiencesSidebarItem} ${styles.pgSidebarItem}`}
+            ref={pgNavRef}
+            className={`${styles.experiencesSidebarItem} ${styles.pgSidebarItem} ${styles.isSelected}`}
             onClick={pgSidebarClickCallback}
           >
             <span>Prometheus Group</span>
@@ -66,6 +88,7 @@ export default function Experiences() {
             <span>2017 - 2020</span>
           </li>
           <li
+            ref={ncsuNavRef}
             className={`${styles.experiencesSidebarItem} ${styles.ncsuSidebarItem}`}
             onClick={ncsuSidebarClickCallback}
           >
@@ -74,6 +97,7 @@ export default function Experiences() {
             <span>2015 - 2017</span>
           </li>
           <li
+            ref={wtccNavRef}
             className={`${styles.experiencesSidebarItem} ${styles.wtccSidebarItem}`}
             onClick={wtccSidebarClickCallback}
           >
@@ -82,6 +106,7 @@ export default function Experiences() {
             <span>2013 - 2015</span>
           </li>
           <li
+            ref={usafNavRef}
             className={`${styles.experiencesSidebarItem} ${styles.usafSidebarItem}`}
             onClick={usafSidebarClickCallback}
           >

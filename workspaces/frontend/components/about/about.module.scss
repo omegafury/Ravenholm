@@ -62,7 +62,8 @@ $normalBorder: 2px solid lightsteelblue;
       background-color: rgba(255, 255, 255, 0.75);
       transition: background-color 1s;
     }
-    .experiencesSidebarItem:hover {
+    .experiencesSidebarItem:hover,
+    .isSelected {
       opacity: 0.25;
     }
     .pgSidebarItem {
