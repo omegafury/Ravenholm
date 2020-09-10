@@ -1,0 +1,118 @@
+$numItems: 8;
+$itemDim: 25vw;
+$PI: 3.1415926535;
+$translateZ: calc((#{$numItems} * #{$itemDim}) / (2 * #{$PI}));
+
+.carouselContainer {
+  height: inherit;
+  display: grid;
+  grid-template-areas:
+    ". upArrow ."
+    "leftArrow carousel rightArrow"
+    ". downArrow .";
+  grid-template-columns: 5em auto 5em;
+  grid-template-rows: 5em auto 5em;
+
+  .leftArrow {
+    grid-area: leftArrow;
+  }
+  .rightArrow {
+    grid-area: rightArrow;
+  }
+  .upArrow {
+    visibility: hidden;
+    grid-area: upArrow;
+  }
+  .downArrow {
+    visibility: hidden;
+    grid-area: downArrow;
+  }
+  .leftArrow,
+  .rightArrow {
+    img {
+      width: 3em;
+    }
+  }
+  .upArrow,
+  .downArrow {
+    img {
+      height: 3em;
+    }
+  }
+  .leftArrow,
+  .rightArrow,
+  .upArrow,
+  .downArrow {
+    justify-self: center;
+    align-self: center;
+    filter: drop-shadow(2px 4px 4px black);
+    cursor: pointer;
+  }
+  .leftArrow:hover,
+  .rightArrow:hover,
+  .upArrow:hover,
+  .downArrow:hover {
+    opacity: 0.5;
+  }
+
+  .items {
+    grid-area: carousel;
+    align-self: center;
+    justify-self: center;
+    display: grid;
+    grid-template-areas: "item";
+    perspective: 100vw;
+    .item {
+      grid-area: item;
+      align-self: center;
+      justify-self: center;
+      height: $itemDim;
+      width: $itemDim;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: 0.1em solid black;
+      border-radius: 0.5em;
+      transition: transform 0.75s;
+      div {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .leftArrow,
+  .rightArrow {
+    visibility: hidden !important;
+  }
+  .upArrow,
+  .downArrow {
+    visibility: visible !important;
+  }
+  .carouselContainer {
+    .items {
+      transform: rotateZ(-90deg) scale(1.25);
+      .item > div {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+}
+@media only screen and (max-width: 425px) {
+  .leftArrow,
+  .rightArrow {
+    visibility: hidden !important;
+  }
+  .upArrow,
+  .downArrow {
+    visibility: visible !important;
+  }
+  .carouselContainer {
+    .items {
+      transform: rotateZ(-90deg) scale(1.4);
+      .item > div {
+        transform: rotateZ(90deg);
+      }
+    }
+  }
+}

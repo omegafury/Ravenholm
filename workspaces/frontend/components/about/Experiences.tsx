@@ -20,7 +20,6 @@ const toggleBodyItemVisibility = (
   const navElements = navElementRefs.map((navElementRef) => {
     return navElementRef.current;
   });
-  console.warn(navElements, navElementRefs, indexToShow);
   navElements.forEach((element, index) => {
     if (!element) {
       return;
