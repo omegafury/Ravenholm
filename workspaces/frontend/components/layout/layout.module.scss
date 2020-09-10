@@ -4,9 +4,9 @@
   grid-template-columns: 10px 50px auto 50px 10px;
   grid-template-rows: 10px 50px 12px auto 50px;
   grid-template-areas:
-    "topMargin topMargin topMargin topMargin topMargin"
-    "leftMargin homeAnchor . hamburger rightMargin"
-    "bottomMargin bottomMargin bottomMargin bottomMargin bottomMargin"
+    ". . . . ."
+    ". homeAnchor . hamburger ."
+    ". . . . ."
     "body body body body body"
     ". . footer . .";
 }

@@ -6,6 +6,7 @@ $normalBorder: 2px solid lightsteelblue;
   height: inherit;
   display: grid;
   grid-template-columns: 200px calc(100vw - 200px);
+  grid-template-rows: auto;
   grid-template-areas: "sidebar body";
 
   .experiencesSidebarContainer {
@@ -94,6 +95,7 @@ $normalBorder: 2px solid lightsteelblue;
       align-self: center;
       opacity: 0;
       display: grid;
+      grid-template-columns: auto;
       grid-template-rows: 5em 1em;
       overflow-y: auto;
 
@@ -129,6 +131,7 @@ $normalBorder: 2px solid lightsteelblue;
         > ul > li > div {
           display: grid;
           grid-template-columns: 50% 50%;
+          grid-template-rows: auto;
           :first-child {
             margin: 0.5em;
             justify-self: left;
@@ -161,6 +164,7 @@ $normalBorder: 2px solid lightsteelblue;
 @media only screen and (max-width: 800px) {
   .experiencesGridContainer {
     grid-template-columns: 25px auto;
+    grid-template-rows: auto;
     .experiencesSidebarContainer {
       width: 25px;
       transition: width 1s;
