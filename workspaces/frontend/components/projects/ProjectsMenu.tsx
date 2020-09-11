@@ -1,21 +1,57 @@
-import React, { useRef, useCallback, useEffect, useState } from "react";
+import React, {
+  useRef,
+  useCallback,
+  useEffect,
+  useState,
+  useMemo,
+} from "react";
 import styles from "components/projects/projects.module.scss";
+import VoronoiMutator from "components/VoronoiMutator";
 
-const items = [
-  "item1",
-  "item2",
-  "item3",
-  "item4",
-  "item5",
-  "item6",
-  "item7",
-  "item8",
+type itemType = {
+  title: string;
+  preview: React.ReactNode;
+};
+
+const items: itemType[] = [
+  {
+    title: "Voronoi Mutator",
+    preview: <VoronoiMutator />,
+  },
+  {
+    title: "item2",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item3",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item4",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item5",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item6",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item7",
+    preview: <div>placeholder</div>,
+  },
+  {
+    title: "item8",
+    preview: <div>placeholder</div>,
+  },
 ];
 // 25vw. See projects.module.scss for $itemDim;
 const itemDim = 25;
 
 export default function ProjectsMenu() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(items.length);
   const refsMap = items.map(() => {
     return useRef<HTMLDivElement>(null);
   });
@@ -24,6 +60,7 @@ export default function ProjectsMenu() {
       if (!ref.current) {
         return;
       }
+      // Rotate each item to the correct location on the carousel.
       const rotateYVal = ((2 * Math.PI) / items.length) * (index + count);
       const translateZVal = (items.length * itemDim) / (2 * Math.PI);
       ref.current.style.transform = `rotateY(${rotateYVal}rad) translateZ(${translateZVal}vw`;
@@ -52,9 +89,15 @@ export default function ProjectsMenu() {
         </div>
         <div className={styles.items}>
           {refsMap.map((ref, index) => {
+            const item = items[index];
             return (
               <div key={index} className={`${styles.item}`} ref={ref}>
-                <div>test {index}</div>
+                <div className={styles.itemBoxSides} />
+                <div className={styles.itemBoxTopBottom} />
+                <div className={styles.itemCard}>
+                  <div className={styles.itemCardTitle}>{item.title}</div>
+                  <div className={styles.itemCardPreview}>{item.preview}</div>
+                </div>
               </div>
             );
           })}

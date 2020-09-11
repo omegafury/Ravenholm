@@ -162,7 +162,7 @@ $normalBorder: 2px solid lightsteelblue;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1024px) {
   .experiencesGridContainer {
     grid-template-columns: 25px auto;
     grid-template-rows: auto;

@@ -19,7 +19,7 @@ ul {
   padding-inline-start: 1.5em;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
   /* For mobile phones: */
   html,
   body {
@@ -44,7 +44,7 @@ ul {
 }
 
 a {
-  color: #0070f3;
+  color: #55759e;
   text-decoration: none;
 }
 a:hover {
