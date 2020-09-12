@@ -2,6 +2,13 @@ $numItems: 8;
 $itemDim: 24vw;
 $PI: 3.1415926535;
 
+@function randomNum($min, $max) {
+  $rand: random();
+  $randomNum: $min + floor($rand * (($max - $min) + 1));
+
+  @return $randomNum;
+}
+
 .carouselContainer {
   height: inherit;
   display: grid;
@@ -104,8 +111,9 @@ $PI: 3.1415926535;
       }
     }
     .item:hover {
-      opacity: 0.5;
+      filter: saturate(2.5);
     }
+
     // Back of the box
     .item::before {
       content: "";
@@ -210,5 +218,138 @@ $PI: 3.1415926535;
 @media only screen and (max-height: 500px) and (orientation: "landscape") {
   .items {
     transform: scale(0.8);
+  }
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  filter: drop-shadow(2px 4px 6px grey);
+  .grid {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+    grid-template-rows: 30% 30% 30%;
+    row-gap: 3%;
+    column-gap: 3%;
+    transform: skewx(15deg) rotatex(45deg) translatex(15%);
+    transform-style: preserve-3d;
+
+    .item {
+      display: grid;
+      grid-template-areas: "itemFace";
+      grid-template-rows: 100%;
+      grid-template-columns: 100%;
+      transition: transform 0.25s;
+      transform-style: preserve-3d;
+
+      > div {
+        grid-area: itemFace;
+        .itemCardPreview {
+          height: 100%;
+          background-color: white;
+        }
+      }
+
+      .itemFace5 {
+        justify-self: center;
+        align-self: end;
+        transform: translateY(-1.5em);
+        transition: transform 0.25s;
+        z-index: 1;
+        color: white;
+      }
+      .itemFace4 {
+        background-color: #f1c277;
+        transition: transform 0.16s;
+        z-index: 2;
+      }
+      .itemFace3 {
+        background-color: #675ea7;
+        transition: transform 0.19s;
+        z-index: 3;
+      }
+      .itemFace2 {
+        background-color: #5575de;
+        transition: transform 0.22s;
+        z-index: 4;
+      }
+      .itemFace1 {
+        transition: transform 0.25s;
+        border: 1px solid lightsteelblue;
+        z-index: 5;
+      }
+    }
+    .item::before {
+      content: "";
+      position: absolute;
+      top: 15%;
+      bottom: 15%;
+      left: 15%;
+      right: 15%;
+      background: rgba(0, 0, 0, 1);
+      box-shadow: 0px 0px 0px grey;
+      transition: all 0.25s;
+    }
+    .item:hover::before {
+      top: 5%;
+      bottom: 5%;
+      left: 5%;
+      right: 5%;
+      box-shadow: 0px 0px 1em 1em black;
+      opacity: 0.2;
+    }
+
+    @for $i from 1 through 9 {
+      .item:nth-child(#{$i}):hover {
+        .itemFace1 {
+          transform: translate3d(6em, 6em, 12em);
+        }
+        .itemFace2 {
+          transform: translate3d(4.5em, 4.5em, 9em)
+            rotatez(#{randomNum(-3, 3)}deg);
+        }
+        .itemFace3 {
+          transform: translate3d(3em, 3em, 6em) rotatez(#{randomNum(-3, 3)}deg);
+        }
+        .itemFace4 {
+          transform: translate3d(1.5em, 1.5em, 3em)
+            rotatez(#{randomNum(-3, 3)}deg);
+        }
+        .itemFace5 {
+          transform: translateY(0.5em);
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .gridContainer {
+    grid-template-columns: 100%;
+    grid-template-rows: 50% 50%;
+    .grid {
+      transform: skewx(15deg) rotatex(45deg) scale(0.8);
+      font-size: 6px;
+      .itemFace5 {
+        font-size: 12px;
+      }
+    }
+  }
+}
+@media only screen and (max-height: 425px) {
+  .gridContainer {
+    .grid {
+      font-size: 6px;
+      .itemFace5 {
+        font-size: 12px;
+      }
+    }
   }
 }
