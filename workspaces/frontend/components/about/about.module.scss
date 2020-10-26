@@ -17,6 +17,7 @@ $normalBorder: 2px solid lightsteelblue;
     flex-direction: column;
     margin: 0;
     padding: 0;
+    white-space: nowrap;
     .experiencesSidebarItem {
       flex-grow: 1;
       display: grid;
