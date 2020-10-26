@@ -1,10 +1,10 @@
 import React from "react";
-import ProjectsMenu2 from "components/projects/ProjectsMenu2";
+import IsometricMenu from "components/projects/IsometricMenu";
 
 export default function Projects() {
   return (
     <>
-      <ProjectsMenu2 />
+      <IsometricMenu />
     </>
   );
 }

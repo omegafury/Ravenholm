@@ -37,20 +37,6 @@ export default function NavMenu() {
               </a>
             </Link>
           </li>
-          <li>
-            <Link href="/contact" as={`/contact`}>
-              <a className={utilStyles.headingLg} onClick={onClick}>
-                Contact
-              </a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/posts/first-post" as={`/posts/first-post`}>
-              <a className={utilStyles.headingLg} onClick={onClick}>
-                First Post
-              </a>
-            </Link>
-          </li>
         </ul>
       </section>
       <section className={styles.navMenuMyInfo}>

@@ -5,7 +5,7 @@ import React, {
   useState,
   useMemo,
 } from "react";
-import styles from "components/projects/projects.module.scss";
+import styles from "components/carousel/carousel.module.scss";
 import VoronoiMutator from "components/VoronoiMutator";
 
 type itemType = {
@@ -50,7 +50,7 @@ const items: itemType[] = [
 // 25vw. See projects.module.scss for $itemDim;
 const itemDim = 25;
 
-export default function ProjectsMenu() {
+export default function Carousel() {
   const [count, setCount] = useState(items.length);
   const refsMap = items.map(() => {
     return useRef<HTMLDivElement>(null);

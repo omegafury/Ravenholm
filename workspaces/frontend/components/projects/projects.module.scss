@@ -1,7 +1,6 @@
-$numItems: 8;
-$itemDim: 24vw;
-$PI: 3.1415926535;
+$numberOfProjects: 9;
 
+// Generate a random integer between the 2 provided values.
 @function randomNum($min, $max) {
   $rand: random();
   $randomNum: $min + floor($rand * (($max - $min) + 1));
@@ -9,321 +8,122 @@ $PI: 3.1415926535;
   @return $randomNum;
 }
 
-.carouselContainer {
-  height: inherit;
-  display: grid;
-  grid-template-areas:
-    ". upArrow ."
-    "leftArrow carousel rightArrow"
-    ". downArrow .";
-  grid-template-columns: 5em auto 5em;
-  grid-template-rows: 0em auto 0em;
+// Generate the translate3d values for the isometric card hover transforms.
+@function isoHover($distanceFromBottom) {
+  $xyFactor: 1;
+  $zFactor: 2;
+  @return translate3d(
+    #{($distanceFromBottom * $xyFactor)}em,
+    #{($distanceFromBottom * $xyFactor)}em,
+    #{($distanceFromBottom * $xyFactor * $zFactor)}em
+  );
+}
 
-  .leftArrow {
-    grid-area: leftArrow;
-  }
-  .rightArrow {
-    grid-area: rightArrow;
-  }
-  .upArrow {
-    visibility: hidden;
-    grid-area: upArrow;
-  }
-  .downArrow {
-    visibility: hidden;
-    grid-area: downArrow;
-  }
-  .leftArrow,
-  .rightArrow {
-    img {
-      width: 3em;
-    }
-  }
-  .upArrow,
-  .downArrow {
-    img {
-      height: 3em;
-    }
-  }
-  .leftArrow,
-  .rightArrow,
-  .upArrow,
-  .downArrow {
-    justify-self: center;
-    align-self: center;
-    filter: drop-shadow(2px 4px 4px black);
-    cursor: pointer;
-    z-index: 99;
-  }
-  .leftArrow:hover,
-  .rightArrow:hover,
-  .upArrow:hover,
-  .downArrow:hover {
-    opacity: 0.5;
-  }
-
-  .items {
-    grid-area: carousel;
-    align-self: center;
-    justify-self: center;
-    display: grid;
-    grid-template-areas: "item";
-    perspective: 100vw;
-    transform-style: preserve-3d;
-    transition: transform 0.75s;
-    .item {
-      grid-area: item;
-      align-self: center;
-      justify-self: center;
-      height: $itemDim;
-      width: $itemDim;
-      background: #55759e;
-      border: 0.05em solid lightsteelblue;
-      color: white;
-      transition: transform 0.75s;
+/** Isometric Menu **/
+.gridBackground {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #55759e, lightsteelblue);
+  .gridContainer {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    filter: drop-shadow(2px 4px 6px grey);
+    .grid {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 30% 30% 30%;
+      grid-template-rows: 90%;
+      row-gap: 3%;
+      column-gap: 3%;
+      transform: skewx(15deg) rotatex(45deg) scale(0.7);
       transform-style: preserve-3d;
-      perspective: 100vw;
-      .itemCard {
-        width: 100%;
-        height: 100%;
-        display: grid;
-        grid-template:
-          "title title title" 40%
-          ". . ." 10%
-          "preview preview preview" 40%
-          "preview preview preview" 10% / 10% 80% 10%;
-        transform: translateZ(0.01em);
-        transition: transform 0.75s;
 
-        .itemCardTitle {
-          grid-area: title;
-          display: flex;
-          justify-self: center;
-          align-items: center;
-        }
-        .itemCardPreview {
-          grid-area: preview;
-          background: white;
-          > canvas {
-            opacity: 1 !important;
+      .item {
+        display: grid;
+        grid-template-areas: "itemFace";
+        grid-template-rows: 100%;
+        grid-template-columns: 100%;
+        transition: transform 0.25s;
+        transform-style: preserve-3d;
+        cursor: pointer;
+
+        > div {
+          grid-area: itemFace;
+          .itemCardPreview {
+            height: 100%;
+            background-color: white;
           }
         }
-      }
-    }
-    .item:hover {
-      filter: saturate(2.5);
-    }
 
-    // Back of the box
-    .item::before {
-      content: "";
-      position: absolute;
-      top: -0.05em;
-      bottom: -0.05em;
-      right: -0.05em;
-      left: -0.05em;
-      background: linear-gradient(#55759e 50%, white 50%);
-      border: 0.05em solid lightsteelblue;
-      transform: translateZ(-0.4em);
-      box-shadow: 0px 0px 6px black;
-      transition: transform 0.75s;
-    }
-    // Left side of box
-    .itemBoxSides {
-      position: absolute;
-      width: 0.45em;
-      top: -0.05em;
-      bottom: -0.05em;
-      left: -0.05em;
-      background: linear-gradient(#55759e 50%, white 50%);
-      border: 0.05em solid lightsteelblue;
-      transform: rotateY(90deg);
-      transform-origin: left center;
-      transform-style: preserve-3d;
-      transition: transform 0.75s;
-    }
-    // Right side of box
-    .itemBoxSides::before {
-      content: "";
-      position: absolute;
-      top: -0.05em;
-      bottom: -0.05em;
-      right: -0.05em;
-      left: -0.05em;
-      background: linear-gradient(#55759e 50%, white 50%);
-      border: 0.05em solid lightsteelblue;
-      transform: translateZ(calc(#{$itemDim} - 0.05em));
-      transition: transform 0.75s;
-    }
-  }
-}
-
-@media only screen and (max-width: 768px) and (orientation: "portrait") {
-  .leftArrow,
-  .rightArrow {
-    visibility: hidden !important;
-  }
-  .upArrow,
-  .downArrow {
-    visibility: visible !important;
-  }
-  .carouselContainer {
-    grid-template-columns: 0em auto 0em;
-    grid-template-rows: 5em auto 5em;
-    .items {
-      transform: rotateZ(-90deg) scale(1.25);
-      .item {
-        .itemBoxSides {
-          background: white !important;
-        }
-        .itemBoxSides::before {
-          background: #55759e !important;
-        }
-        .itemCard {
-          transform: rotateZ(90deg) translateZ(0.01em);
-        }
-      }
-    }
-  }
-}
-@media only screen and (max-width: 425px) and (orientation: "portrait") {
-  .leftArrow,
-  .rightArrow {
-    visibility: hidden !important;
-  }
-  .upArrow,
-  .downArrow {
-    visibility: visible !important;
-  }
-  .carouselContainer {
-    grid-template-columns: 0em auto 0em;
-    grid-template-rows: 5em auto 5em;
-    .items {
-      transform: rotateZ(-90deg) scale(1.3);
-      .item {
-        .itemBoxSides {
-          background: white !important;
-        }
-        .itemBoxSides::before {
-          background: #55759e !important;
-        }
-        .itemCard {
-          transform: rotateZ(90deg) translateZ(0.01em);
-        }
-      }
-    }
-  }
-}
-
-@media only screen and (max-height: 500px) and (orientation: "landscape") {
-  .items {
-    transform: scale(0.8);
-  }
-}
-
-.gridContainer {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 100%;
-  height: 100%;
-  width: 100%;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  filter: drop-shadow(2px 4px 6px grey);
-  .grid {
-    height: 100%;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 30% 30% 30%;
-    grid-template-rows: 30% 30% 30%;
-    row-gap: 3%;
-    column-gap: 3%;
-    transform: skewx(15deg) rotatex(45deg) translatex(15%);
-    transform-style: preserve-3d;
-
-    .item {
-      display: grid;
-      grid-template-areas: "itemFace";
-      grid-template-rows: 100%;
-      grid-template-columns: 100%;
-      transition: transform 0.25s;
-      transform-style: preserve-3d;
-
-      > div {
-        grid-area: itemFace;
-        .itemCardPreview {
-          height: 100%;
-          background-color: white;
-        }
-      }
-
-      .itemFace5 {
-        justify-self: center;
-        align-self: end;
-        transform: translateY(-1.5em);
-        transition: transform 0.25s;
-        z-index: 1;
-        color: white;
-      }
-      .itemFace4 {
-        background-color: #f1c277;
-        transition: transform 0.16s;
-        z-index: 2;
-      }
-      .itemFace3 {
-        background-color: #675ea7;
-        transition: transform 0.19s;
-        z-index: 3;
-      }
-      .itemFace2 {
-        background-color: #5575de;
-        transition: transform 0.22s;
-        z-index: 4;
-      }
-      .itemFace1 {
-        transition: transform 0.25s;
-        border: 1px solid lightsteelblue;
-        z-index: 5;
-      }
-    }
-    .item::before {
-      content: "";
-      position: absolute;
-      top: 15%;
-      bottom: 15%;
-      left: 15%;
-      right: 15%;
-      background: rgba(0, 0, 0, 1);
-      box-shadow: 0px 0px 0px grey;
-      transition: all 0.25s;
-    }
-    .item:hover::before {
-      top: 5%;
-      bottom: 5%;
-      left: 5%;
-      right: 5%;
-      box-shadow: 0px 0px 1em 1em black;
-      opacity: 0.2;
-    }
-
-    @for $i from 1 through 9 {
-      .item:nth-child(#{$i}):hover {
-        .itemFace1 {
-          transform: translate3d(6em, 6em, 12em);
-        }
-        .itemFace2 {
-          transform: translate3d(4.5em, 4.5em, 9em)
-            rotatez(#{randomNum(-3, 3)}deg);
-        }
-        .itemFace3 {
-          transform: translate3d(3em, 3em, 6em) rotatez(#{randomNum(-3, 3)}deg);
+        .itemFace5 {
+          justify-self: center;
+          align-self: end;
+          transform: translateY(-1.5em);
+          transition: transform 0.25s;
+          z-index: 1;
+          color: white;
         }
         .itemFace4 {
-          transform: translate3d(1.5em, 1.5em, 3em)
-            rotatez(#{randomNum(-3, 3)}deg);
+          background-color: #f1c277;
+          transition: transform 0.16s;
+          z-index: 2;
         }
-        .itemFace5 {
-          transform: translateY(0.5em);
+        .itemFace3 {
+          background-color: #675ea7;
+          transition: transform 0.19s;
+          z-index: 3;
+        }
+        .itemFace2 {
+          background-color: #5575de;
+          transition: transform 0.22s;
+          z-index: 4;
+        }
+        .itemFace1 {
+          transition: transform 0.25s;
+          border: 1px solid lightsteelblue;
+          z-index: 5;
+        }
+      }
+      .item::before {
+        content: "";
+        position: absolute;
+        top: 15%;
+        bottom: 15%;
+        left: 15%;
+        right: 15%;
+        background: rgba(0, 0, 0, 1);
+        box-shadow: 0px 0px 0px grey;
+        transition: all 0.25s;
+      }
+      .item:hover::before {
+        top: 5%;
+        bottom: 5%;
+        left: 5%;
+        right: 5%;
+        box-shadow: 0px 0px 1em 1em black;
+        opacity: 0.2;
+      }
+
+      @for $i from 1 through $numberOfProjects {
+        .item:nth-child(#{$i}):hover {
+          .itemFace1 {
+            transform: isoHover(4);
+          }
+          .itemFace2 {
+            transform: isoHover(3) rotatez(#{randomNum(-3, 3)}deg);
+          }
+          .itemFace3 {
+            transform: isoHover(2) rotatez(#{randomNum(-3, 3)}deg);
+          }
+          .itemFace4 {
+            transform: isoHover(1) rotatez(#{randomNum(-3, 3)}deg);
+          }
+          .itemFace5 {
+            transform: translateY(0.5em);
+          }
         }
       }
     }
@@ -332,10 +132,7 @@ $PI: 3.1415926535;
 
 @media only screen and (max-width: 425px) {
   .gridContainer {
-    grid-template-columns: 100%;
-    grid-template-rows: 50% 50%;
     .grid {
-      transform: skewx(15deg) rotatex(45deg) scale(0.8);
       font-size: 6px;
       .itemFace5 {
         font-size: 12px;
@@ -351,5 +148,87 @@ $PI: 3.1415926535;
         font-size: 12px;
       }
     }
+  }
+}
+
+/** Project Page **/
+.projectPageContainer {
+  width: 100%;
+  height: calc(100vh - 122px);
+  background: linear-gradient(180deg, #55759e, lightsteelblue);
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-areas: "info project";
+  .infoContainer {
+    z-index: 2;
+    width: 50%;
+    height: 100%;
+    grid-area: info;
+    display: grid;
+    grid-template-areas: "infoBox displayButton";
+    grid-template-rows: 100%;
+    grid-template-columns: auto 24px;
+    .infoBox {
+      display: grid;
+      grid-area: infoBox;
+      height: 100%;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.5);
+      .infoTitle {
+        justify-self: center;
+        align-self: center;
+      }
+      hr {
+        width: 80%;
+        height: 1px;
+      }
+      .infoDesc {
+        font-size: smaller;
+        p {
+          margin-left: 1em;
+          margin-right: 1em;
+        }
+        p:first-child {
+          margin-top: 0;
+        }
+      }
+      .additionalControls {
+      }
+    }
+    .displayButton {
+      display: grid;
+      grid-area: displayButton;
+      width: 24px;
+      height: 100%;
+      border-left: 2px solid lightsteelblue;
+      border-right: 2px solid lightsteelblue;
+      background-color: rgba(255, 255, 255, 0.8);
+      .displayButtonIcon {
+        justify-self: center;
+        align-self: center;
+      }
+    }
+  }
+  .projectContainer {
+    grid-area: info / info / project / project;
+    height: 100%;
+    overflow: hidden;
+  }
+}
+
+.infoContainerIsExpanded {
+  width: 50% !important;
+  transition: width 0.5s;
+  .displayButtonIcon {
+    transform: rotatez(0deg);
+    transition: transform 0.5s;
+  }
+}
+.infoContainerIsCollapsed {
+  width: 24px !important;
+  transition: width 0.5s;
+  .displayButtonIcon {
+    transform: rotatez(180deg);
+    transition: transform 0.5s;
   }
 }

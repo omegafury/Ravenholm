@@ -12,7 +12,7 @@ export default function VoronoiStippling() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    const worker = new Worker("voronoiStipplingWorker.js");
+    const worker = new Worker("../voronoiStipplingWorker.js");
     let image = new Image();
     image.src = RAVEN3_PATH;
     image.onload = () => {

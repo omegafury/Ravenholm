@@ -89,7 +89,7 @@ export default function Home({
             </div>
           </Typist>
         </div>
-        <VoronoiMutator />
+        <VoronoiMutator opacity={0.5} />
       </div>
     </>
   );

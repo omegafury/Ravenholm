@@ -15,6 +15,9 @@ type OptionsType = {
   canvasHeight: number;
   largerDimension: number;
 };
+type VoronoiMutatorPropsType = {
+  opacity?: number;
+};
 
 function getRandomFromRange(min: number, max: number) {
   return Math.random() * (max - min) + min;
@@ -168,7 +171,7 @@ function render(context: CanvasRenderingContext2D, options: OptionsType) {
  * some enhancements to allow dynamic modulation of the frame
  * options so that the animation would slowly change over time
  */
-export default function VoronoiMutator() {
+export default function VoronoiMutator({ opacity }: VoronoiMutatorPropsType) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -213,7 +216,7 @@ export default function VoronoiMutator() {
         style={{
           width: "100%",
           height: "100%",
-          opacity: 0.5,
+          opacity: opacity,
           gridArea: "mainBody",
         }}
       />
