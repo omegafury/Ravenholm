@@ -172,7 +172,7 @@ $numberOfProjects: 9;
       display: grid;
       grid-area: infoBox;
       height: 100%;
-      overflow: hidden;
+      overflow-y: auto;
       background-color: rgba(255, 255, 255, 0.5);
       .infoTitle {
         justify-self: center;
