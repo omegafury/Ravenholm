@@ -3,7 +3,7 @@ $thinBorder: 1px solid lightsteelblue;
 $normalBorder: 2px solid lightsteelblue;
 
 .experiencesGridContainer {
-  height: inherit;
+  height: calc(100vh - 122px);
   display: grid;
   grid-template-columns: 200px calc(100vw - 200px);
   grid-template-rows: auto;
