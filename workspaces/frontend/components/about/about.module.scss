@@ -2,6 +2,10 @@
 $thinBorder: 1px solid lightsteelblue;
 $normalBorder: 2px solid lightsteelblue;
 
+.siteContainer {
+  margin: 0em 5em 0em 5em;
+}
+
 .experiencesGridContainer {
   height: calc(100vh - 122px);
   display: grid;

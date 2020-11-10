@@ -85,6 +85,20 @@ export const getStaticProps: GetStaticProps = async () => {
   };
 };
 
+/**
+ * This component, and the corresponding actions and reducer, are HEAVILY influenced
+ * by the library next-page-transitions: https://github.com/illinois/next-page-transitions.
+ * That was the best library I could find at the time for assisting with animating page
+ * transitions in a Next.js application, but it's both entirely Javascript with no type
+ * definitions anywhere, it's using deprecated lifecycle methods that will be removed
+ * in React 17, and finally, it hasn't been updated in 2-3 years. As far as I can tell,
+ * it's completely dead. Since I really liked what the library did, and the implementation
+ * appeared to be fairly simple, I simply rewrote it from scratch, this time in typescript,
+ * with hooks and reducers for state management. At this point, very little of the original
+ * code remains, indeed, the business logic was a complete rewrite. I made no significant
+ * changes to the way it works however, so to the outside observer it should function
+ * exactly the same.
+ */
 export default function PageTransition({
   tag: Tag,
   children,

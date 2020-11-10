@@ -1,6 +1,6 @@
 import styles from "components/about/about.module.scss";
 
-export default function ExperiencesBodyWtcc() {
+export default function ExperienceBodyWtcc() {
   return (
     <>
       <img className={styles.bodyLogo} src={"/images/wtccWideLogo.png"}></img>

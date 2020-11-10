@@ -35,36 +35,6 @@ const items: itemType[] = [
     ),
     href: "/projects/voronoiStippling",
   },
-  // {
-  //   title: "item4",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
-  // {
-  //   title: "item5",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
-  // {
-  //   title: "item6",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
-  // {
-  //   title: "item7",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
-  // {
-  //   title: "item8",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
-  // {
-  //   title: "item9",
-  //   preview: <div>placeholder</div>,
-  //   href: "",
-  // },
 ];
 
 export default function IsometricMenu() {

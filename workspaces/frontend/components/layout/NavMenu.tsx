@@ -24,9 +24,16 @@ export default function NavMenu() {
         <hr></hr>
         <ul className={utilStyles.list}>
           <li>
-            <Link href="/about" as={`/about`}>
+            <Link href="/about" as={`/about/site`}>
               <a className={utilStyles.headingLg} onClick={onClick}>
-                About
+                About: This site
+              </a>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" as={`/about/experience`}>
+              <a className={utilStyles.headingLg} onClick={onClick}>
+                About: My Journey
               </a>
             </Link>
           </li>

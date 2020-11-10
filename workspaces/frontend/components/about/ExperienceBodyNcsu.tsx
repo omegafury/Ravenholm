@@ -1,6 +1,6 @@
 import styles from "components/about/about.module.scss";
 
-export default function ExperiencesBodyNcsu() {
+export default function ExperienceBodyNcsu() {
   return (
     <>
       <img className={styles.bodyLogo} src={"/images/ncsuWideLogo.png"}></img>
@@ -137,27 +137,33 @@ export default function ExperiencesBodyNcsu() {
                 </p>
                 <p>
                   Program Notes: The piece is titled concrete microscope.
-                  Concrete because it is a Musik Concrete piece, and microscope
-                  because the entire piece involves layering progressively more
-                  zoomed in sections of a single short audio sample. The
-                  original audio sample is of the composer speaking the words
-                  “Musik Concrete”, and as such is only about a second or two
-                  long. The piece is divided into two distinct sections. The
-                  first part involves zooming in on the word “Musik”, while the
-                  second involves zooming in on the word “Concrete”. Each
-                  section is approximately 2 minutes long, though there is a
-                  small amount of overlap with some of the different audio
-                  tracks.
+                  Concrete because it is a{" "}
+                  <a
+                    href="https://en.wikipedia.org/wiki/Musique_concr%C3%A8te"
+                    target="_blank"
+                  >
+                    Musique concrète
+                  </a>{" "}
+                  piece, and microscope because the entire piece involves
+                  layering progressively more zoomed in sections of a single
+                  short audio sample. The original audio sample is of the
+                  composer speaking the words “Musique concrète”, and as such is
+                  only about a second or two long. The piece is divided into two
+                  distinct sections. The first part involves zooming in on the
+                  word “Musik”, while the second involves zooming in on the word
+                  “Concrete”. Each section is approximately 2 minutes long,
+                  though there is a small amount of overlap with some of the
+                  different audio tracks.
                 </p>
                 <a
                   className={styles.audioControlsAnchor}
-                  href="concrete_microscope.mp3"
+                  href="../concrete_microscope.mp3"
                   target="_blank"
                 >
                   concrete_microscope.mp3
                 </a>
                 <audio controls>
-                  <source src="concrete_microscope.mp3" type="audio/mpeg" />
+                  <source src="../concrete_microscope.mp3" type="audio/mpeg" />
                   Your browser does not support the audio element.
                 </audio>
               </li>

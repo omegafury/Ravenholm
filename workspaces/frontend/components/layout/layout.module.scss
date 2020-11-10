@@ -30,7 +30,7 @@
   opacity: 0;
   z-index: 2;
   background-color: rgba(255, 255, 255, 0.95);
-  transition: ease-in-out 0.7s;
+  transition: ease-in-out 0.5s;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   .navMenuNavSection,
@@ -38,7 +38,7 @@
     align-self: center;
     justify-self: center;
     transform: translateY(50px);
-    transition: ease-in-out 0.7s;
+    transition: ease-in-out 0.5s;
     li {
       margin-top: 0.5em;
       margin-bottom: 0.5em;
@@ -57,7 +57,7 @@
   opacity: 1;
   .navMenuNavSection,
   .navMenuMyInfo {
-    transition: ease-in-out 0.7s;
+    transition: ease-in-out 0.5s;
     transform: translateY(0px);
   }
 }

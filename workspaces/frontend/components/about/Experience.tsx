@@ -1,10 +1,9 @@
 import React, { useRef, useCallback } from "react";
-import utilStyles from "styles/utils.module.css";
 import styles from "components/about/about.module.scss";
-import ExperiencesBodyPg from "components/about/ExperiencesBodyPg";
-import ExperiencesBodyNcsu from "components/about/ExperiencesBodyNcsu";
-import ExperiencesBodyWtcc from "components/about/ExperiencesBodyWtcc";
-import ExperiencesBodyUsaf from "components/about/ExperiencesBodyUsaf";
+import ExperienceBodyPg from "components/about/ExperienceBodyPg";
+import ExperienceBodyNcsu from "components/about/ExperienceBodyNcsu";
+import ExperienceBodyWtcc from "components/about/ExperienceBodyWtcc";
+import ExperienceBodyUsaf from "components/about/ExperienceBodyUsaf";
 
 /**
  * Handles the transitioning of the classNames to animate out and in
@@ -119,16 +118,16 @@ export default function Experiences() {
             ref={pgBodyRef}
             className={`${styles.experiencesBodyItem} ${styles.isVisible}`}
           >
-            <ExperiencesBodyPg />
+            <ExperienceBodyPg />
           </div>
           <div ref={ncsuBodyRef} className={`${styles.experiencesBodyItem}`}>
-            <ExperiencesBodyNcsu />
+            <ExperienceBodyNcsu />
           </div>
           <div ref={wtccBodyRef} className={`${styles.experiencesBodyItem}`}>
-            <ExperiencesBodyWtcc />
+            <ExperienceBodyWtcc />
           </div>
           <div ref={usafBodyRef} className={`${styles.experiencesBodyItem}`}>
-            <ExperiencesBodyUsaf />
+            <ExperienceBodyUsaf />
           </div>
         </div>
       </div>

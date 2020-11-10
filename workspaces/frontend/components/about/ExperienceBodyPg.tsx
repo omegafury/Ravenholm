@@ -1,6 +1,6 @@
 import styles from "components/about/about.module.scss";
 
-export default function ExperiencesBodyPg() {
+export default function ExperienceBodyPg() {
   return (
     <>
       <img className={styles.bodyLogo} src={"/images/pgWideLogo.png"}></img>
@@ -35,6 +35,12 @@ export default function ExperiencesBodyPg() {
             New software displaced an established system whose information
             influences business decisions measuring billions of dollars per
             year.
+          </li>
+          <li>
+            Extensive experience writing and optimizing SQL queries for the
+            aforementioned BI solution, as well as extensive experience
+            architecting the system that made it possible to filter and group by
+            in real time on datasets measuring tens of millions of rows.
           </li>
           <li>
             Combined multiple Git repos into a single monorepo while preserving

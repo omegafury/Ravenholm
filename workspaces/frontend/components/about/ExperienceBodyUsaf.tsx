@@ -1,6 +1,6 @@
 import styles from "components/about/about.module.scss";
 
-export default function ExperiencesBodyUsaf() {
+export default function ExperienceBodyUsaf() {
   return (
     <>
       <img className={styles.bodyLogo} src={"/images/usafLogoText.png"}></img>
@@ -78,15 +78,14 @@ export default function ExperiencesBodyUsaf() {
                 training the process switched to an 8.5 week course. Highlights
                 include grueling physical fitness activities, fighting to stay
                 awake during classes introducing various miltary culture and
-                history, and getting gassed in the gas chamber.
+                history, and getting tear gassed.
               </li>
               <li>
                 I then had technical job training for ~4 months at Sheppard AFB.
                 Highlights here included 3 hour lunch breaks, but since it was
                 the middle of the day we weren't allowed to go anywhere but the
-                school building or the chow hall, so we would take naps in the
-                bathroom stalls. It was a decidedly different atmosphere from
-                basic training.
+                school building or the chow hall, so that was extremely boring.
+                It was a decidedly different atmosphere from basic training.
               </li>
             </ul>
           </li>
@@ -105,7 +104,11 @@ export default function ExperiencesBodyUsaf() {
                 2 occasions for Temporary Duty Assignments (TDY) for a full
                 month each time during this period. On my second trip I was
                 lucky enough to be selected for an incentive flight, and got to
-                ride along in an F-15.
+                ride along in an F-15. That lasted about 1.5 hours, and included
+                a 500mph vertical takeoff, a few laps around the peak of the
+                highest mountain in north america, and my failed attempt at a
+                barrol roll that saw us flying straight down at the ground at
+                500mph (from 18000ft though, my pilot had ample time to fix it).
               </li>
             </ul>
           </li>
@@ -138,11 +141,11 @@ export default function ExperiencesBodyUsaf() {
                 would go to next. The scheduling of this was made dramatically
                 easier as I had a 2 month duration unlimited rail travel ticket,
                 so I could generally simply walk onto a train going anywhere at
-                any time, with some restrictions. I stayed in hostels most of
-                the time, except for when I stayed in an old monestary for a few
-                days in the Netherlands with some friends I'd met about a month
-                earlier. I highly recommend this form of solitary travel if one
-                gets the chance.
+                any time, with some minor restrictions. I stayed in hostels most
+                of the time, except for when I stayed in an old monestary for a
+                few days in the Netherlands with some friends I'd met about a
+                month earlier while travelling through Italy. I highly recommend
+                this form of solitary travel if one gets the chance.
               </li>
             </ul>
           </li>
