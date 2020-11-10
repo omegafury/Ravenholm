@@ -8,4 +8,4 @@ export const RAVEN3_PATH = "/images/raven3.jpg";
 export const GITHUB_LINK = "https://www.github.com/omegafury";
 export const LINKEDIN_LINK =
   "https://www.linkedin.com/in/andrew-poe-1080a21a4/";
-export const EMAIL_LINK = "Andrew.Poe1337@gmail.com";
+export const EMAIL_LINK = "Contact@apoe.tech";

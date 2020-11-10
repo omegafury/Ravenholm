@@ -55,11 +55,13 @@ export default function NavMenu() {
             </a>
           </li>
           <li>
-            <FontAwesomeIcon
-              icon={["far", "arrow-alt-circle-down"]}
-              size="1x"
-            />
-            Download My Resume
+            <a href={"/apoe_resume.pdf"} target="_blank">
+              <FontAwesomeIcon
+                icon={["far", "arrow-alt-circle-down"]}
+                size="1x"
+              />
+              Download My Resume
+            </a>
           </li>
           <li className={styles.social}>
             <a href={GITHUB_LINK}>
