@@ -1,11 +1,11 @@
-name: Expo Build APK
+name: Expo Build apk
 on:
   push:
     branches:
       - master
 jobs:
-  publish:
-    name: Install and publish
+  ci:
+    name: Build apk
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
