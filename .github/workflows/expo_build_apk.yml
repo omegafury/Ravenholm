@@ -20,4 +20,5 @@ jobs:
           expo-cache: true
       - run: yarn install
       - run: cd workspaces/mobile
+      - run: ls
       - run: expo build:android -t apk
