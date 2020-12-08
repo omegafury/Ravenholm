@@ -8,15 +8,16 @@
   },
   "author": "Andrew Poe",
   "license": "MIT",
-  "workspaces": [
-    "workspaces/frontend"
-  ],
+  "workspaces": {
+    "packages": ["workspaces/frontend", "workspaces/mobile"]
+  },
   "scripts": {
     "dev": "yarn workspace frontend dev",
     "build": "yarn workspace frontend build",
     "export": "yarn workspace frontend export",
     "start": "yarn workspace frontend start",
-    "deploy_frontend": "yarn build && yarn export"
+    "deploy_frontend": "yarn build && yarn export",
+    "postinstall": "cd ./workspaces/mobile && expo-yarn-workspaces postinstall"
   },
   "dependencies": {},
   "devDependencies": {}
