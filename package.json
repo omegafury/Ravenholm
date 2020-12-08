@@ -14,6 +14,7 @@
   "scripts": {
     "dev": "yarn workspace frontend dev",
     "build": "yarn workspace frontend build",
+    "build_mobile_apk": "yarn workspace mobile build_android_apk",
     "export": "yarn workspace frontend export",
     "start": "yarn workspace frontend start",
     "deploy_frontend": "yarn build && yarn export",

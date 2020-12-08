@@ -19,5 +19,4 @@ jobs:
           expo-password: ${{ secrets.EXPO_CLI_PASSWORD }}
           expo-cache: true
       - run: yarn install
-      - run: cd workspaces/mobile
-      - run: expo build:android -t apk
+      - run: yarn build_mobile_apk
